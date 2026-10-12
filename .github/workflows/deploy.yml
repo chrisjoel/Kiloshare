@@ -1,0 +1,15 @@
+name: Trigger Netlify No-Cache Build
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Only run if the PR was actually merged (not just closed) and targets the master branch
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master'
+    steps:
+      - name: Trigger Netlify Build with Clear Cache
+        run: |
+          curl -X POST "https://api.netlify.com/build_hooks/6acc51b20dec4cb8e769386a?clear_cache=true"
