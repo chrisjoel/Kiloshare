@@ -127,7 +127,7 @@ function HeroStage({ onBrowse, onGetStarted, listings }) {
       <div className="ks-hero-glow" aria-hidden />
       <div className="ks-hero-inner">
         <h1 className="ks-hero-title">
-          Turning <em>Journeys</em> into Opportunities to Deliver More
+          A Traveler’s <em>Extra Space</em> Filled with Love
         </h1>
         <p className="ks-hero-sub">
           Cameroon–Russia&apos;s trusted luggage-sharing network where verified travellers help move your parcels
