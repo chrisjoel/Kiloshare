@@ -7,9 +7,15 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    # Only run if the PR was actually merged (not just closed) and targets the master branch
+    
+    # Sécurisation des permissions du token GitHub
+    permissions:
+      contents: read
+
+    # Ne s'exécute que si la PR a été fusionnée (et non simplement fermée) sur la branche master
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master'
+    
     steps:
       - name: Trigger Netlify Build with Clear Cache
         run: |
-          curl -X POST "https://api.netlify.com/build_hooks/6acc51b20dec4cb8e769386a?clear_cache=true"
+          curl -X POST "${{ secrets.NETLIFY_BUILD_HOOK }}?clear_cache=true"
